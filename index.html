@@ -10,11 +10,14 @@
     --card: #efe9de;
     --card-light: #f5f1e8;
     --accent: #cc785c;
+    --accent-2: #b85f44;
+    --accent-3: #e0a48c;
     --text: #2c2a26;
     --muted: #8a8678;
     --border: #e6dfd4;
     --teal: #5fa896;
     --orange: #e0a455;
+    --placeholder: #e8e0d2;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -77,13 +80,41 @@
     margin-bottom: 12px;
   }
   .tagline {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--accent);
     letter-spacing: .5px;
     margin-bottom: 16px;
+    height: 24px;
+    font-weight: 600;
   }
+  .tagline .cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
   h2.section-title { font-size: 32px; margin-bottom: 8px; }
   p.section-sub { color: var(--muted); margin-bottom: 40px; }
+
+  /* Fade-up entrance animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .chip-fade {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .chip-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* Hero */
   #hero {
@@ -158,19 +189,7 @@
 
   /* About */
   #about { background: var(--card-light); }
-  .about-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
   #about p.body-text { white-space: pre-line; font-size: 16px; max-width: 640px; }
-  .about-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    max-width: 640px;
-  }
-  .about-meta h4 { font-size: 13px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
-  .about-meta p { font-size: 14px; }
 
   /* Core strengths */
   .strength-grid {
@@ -217,17 +236,15 @@
     padding: 24px 22px;
   }
   .job-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: var(--accent);
-    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
     margin-bottom: 16px;
   }
+  .job-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .job-card h3 { font-size: 16px; margin-bottom: 12px; }
   .job-tags { display: flex; gap: 8px; flex-wrap: wrap; }
   .job-tags span {
@@ -237,30 +254,6 @@
     padding: 4px 10px;
     border-radius: 999px;
   }
-
-  /* Tabs (shared by portfolio + 案例分享) */
-  .tabs {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    margin-bottom: 32px;
-    -webkit-overflow-scrolling: touch;
-  }
-  .tab-btn {
-    flex: 0 0 auto;
-    padding: 9px 20px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: #fff;
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background .15s, color .15s;
-  }
-  .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   /* Project cards (作品·專案集) */
   .project-grid {
@@ -306,9 +299,11 @@
     background: var(--card);
     border-radius: 10px;
     overflow: hidden;
-    display: none;
+    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .gallery-card.show { display: block; }
+  .gallery-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+  }
   .gallery-thumb {
     position: relative;
     width: 100%;
@@ -322,10 +317,28 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform .2s;
+    transition: transform .25s ease;
   }
-  .gallery-thumb:hover img { transform: scale(1.04); }
-  .gallery-thumb .img-count {
+  .gallery-card:hover .gallery-thumb img { transform: scale(1.03); }
+  .placeholder-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--placeholder);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .25s ease;
+    overflow: hidden;
+  }
+  .gallery-card:hover .placeholder-thumb { transform: scale(1.03); }
+  .placeholder-thumb span.ph-label {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .gallery-thumb .img-count, .placeholder-thumb .img-count {
     position: absolute;
     bottom: 8px;
     right: 8px;
@@ -393,19 +406,72 @@
   }
 
   /* Experience timeline */
-  .timeline { display: flex; flex-direction: column; }
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 24px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
+  .timeline {
+    position: relative;
+    padding-left: 36px;
   }
-  .timeline-item:first-child { border-top: 1px solid var(--border); }
-  .timeline-item .period { color: var(--accent); font-size: 14px; font-weight: 600; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .timeline-item:nth-child(even) .timeline-card {
+    margin-top: 18px;
+  }
+  .timeline-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 24px 26px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px rgba(0,0,0,0.14);
+  }
+  .timeline-item .period { color: var(--accent); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
   .timeline-item h3 { font-size: 17px; margin-bottom: 2px; }
   .timeline-item .role { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
   .timeline-item p.desc { font-size: 14px; color: var(--text); }
+
+  /* Stats counter */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
   /* Continuous learning */
   .chip-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -426,7 +492,9 @@
     background: var(--card);
     border-radius: 10px;
     overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
   }
+  .ai-card:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
   .ai-card.coming-soon { opacity: .7; }
   .ai-card-body { padding: 22px; }
   .ai-card h3 { font-size: 17px; margin-bottom: 6px; }
@@ -498,12 +566,11 @@
   }
   footer .f-name { font-family: Georgia, serif; font-weight: 700; }
   footer .f-sub { font-size: 13px; color: var(--muted); }
-  footer .f-email { font-size: 13px; }
+  footer .f-links { display: flex; gap: 16px; font-size: 13px; }
 
   /* Tablet */
   @media (max-width: 1024px) {
-    .strength-grid, .job-grid, .project-grid, .gallery-grid, .ai-tools-grid { grid-template-columns: repeat(2, 1fr); }
-    .about-grid { grid-template-columns: 1fr; }
+    .strength-grid, .job-grid, .project-grid, .gallery-grid, .ai-tools-grid, .stats-row { grid-template-columns: repeat(2, 1fr); }
     .hero-shapes { display: none; }
   }
 
@@ -516,12 +583,12 @@
   @media (max-width: 600px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .strength-grid, .job-grid, .project-grid, .gallery-grid, .ai-tools-grid { grid-template-columns: 1fr; }
+    .strength-grid, .job-grid, .project-grid, .gallery-grid, .ai-tools-grid, .stats-row { grid-template-columns: 1fr; }
     section { padding: 56px 20px; }
     .hero-inner h1 { font-size: 38px; }
     h2.section-title { font-size: 26px; }
     .ai-thumbs { grid-template-columns: repeat(2, 1fr); }
-    .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+    .timeline-item:nth-child(even) .timeline-card { margin-top: 0; }
     footer { flex-direction: column; text-align: center; }
   }
 </style>
@@ -557,7 +624,7 @@
 
 <section id="hero">
   <div class="hero-inner">
-    <div class="tagline">社群行銷 · 專案管理 · 內容企劃 · AI 工具</div>
+    <div class="tagline"><span id="typeRole"></span><span class="cursor">|</span></div>
     <h1>林鈺奇<br>Danny Lin</h1>
     <p class="subtitle">用系統思維驅動內容策略，讓每個專案都留下可量化的成果。</p>
     <div class="hero-buttons">
@@ -588,7 +655,7 @@
   <p class="section-sub">跨領域的專案執行與溝通協調能力</p>
 
   <div class="strength-grid">
-    <div class="strength-card">
+    <div class="strength-card fade-up">
       <div class="strength-num">01</div>
       <h3>社群行銷</h3>
       <ul>
@@ -598,7 +665,7 @@
         <li>廠商推廣合作</li>
       </ul>
     </div>
-    <div class="strength-card">
+    <div class="strength-card fade-up">
       <div class="strength-num">02</div>
       <h3>專案管理</h3>
       <ul>
@@ -608,7 +675,7 @@
         <li>廠商與單位溝通</li>
       </ul>
     </div>
-    <div class="strength-card">
+    <div class="strength-card fade-up">
       <div class="strength-num">03</div>
       <h3>內容企劃</h3>
       <ul>
@@ -623,32 +690,49 @@
   <div class="eyebrow">Job Functions</div>
   <h2 class="section-title" style="margin-bottom:32px;">工作職能</h2>
   <div class="job-grid">
-    <div class="job-card">
-      <div class="job-icon">📋</div>
+    <div class="job-card fade-up">
+      <div class="job-icon" style="background:var(--accent);">
+        <svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h8M8 9h3"/></svg>
+      </div>
+      <h3>內容企劃</h3>
+      <div class="job-tags">
+        <span>服務建議書</span><span>預算配置</span><span>市場分析</span><span>文案撰寫</span>
+      </div>
+    </div>
+    <div class="job-card fade-up">
+      <div class="job-icon" style="background:var(--accent-2);">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.4 8.4 0 0 1-3.5-.8L3 21l1.9-5.6a8.4 8.4 0 0 1-.8-3.6A8.4 8.4 0 0 1 12.6 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+      </div>
       <h3>社群經營</h3>
       <div class="job-tags">
-        <span>日常貼文</span><span>特殊節日</span><span>KOC合作</span>
+        <span>日常貼文</span><span>特殊節日</span><span>知識宣導</span><span>廣告投放</span>
       </div>
     </div>
-    <div class="job-card">
-      <div class="job-icon">🎪</div>
-      <h3>活動執行</h3>
+    <div class="job-card fade-up">
+      <div class="job-icon" style="background:var(--accent);">
+        <svg viewBox="0 0 24 24"><path d="M3 11v3a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M16 7a5 5 0 0 1 0 10"/><path d="M19 4a9 9 0 0 1 0 16"/></svg>
+      </div>
+      <h3>KOC 合作</h3>
       <div class="job-tags">
-        <span>現場企劃</span><span>展場設計</span><span>媒體記者會</span>
+        <span>推廣大使</span><span>開箱文</span><span>體驗文</span><span>影片</span>
       </div>
     </div>
-    <div class="job-card">
-      <div class="job-icon">🤝</div>
-      <h3>跨部門協作</h3>
+    <div class="job-card fade-up">
+      <div class="job-icon" style="background:var(--accent-2);">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="#fff"/></svg>
+      </div>
+      <h3>專案執行</h3>
       <div class="job-tags">
-        <span>資源整合</span><span>進度追蹤</span><span>廠商接洽</span>
+        <span>產品體驗</span><span>標章推廣</span><span>制度宣導</span><span>展場設計</span>
       </div>
     </div>
-    <div class="job-card">
-      <div class="job-icon">🛠️</div>
-      <h3>AI 工具開發</h3>
+    <div class="job-card fade-up">
+      <div class="job-icon" style="background:var(--accent-3);">
+        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c.8 0 1.5-.7 1.5-1.5 0-.4-.15-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="10.5" r=".9" fill="#fff"/><circle cx="10.5" cy="7.5" r=".9" fill="#fff"/><circle cx="14.5" cy="7.5" r=".9" fill="#fff"/><circle cx="17" cy="10.5" r=".9" fill="#fff"/></svg>
+      </div>
+      <h3>美編設計</h3>
       <div class="job-tags">
-        <span>Claude 開發</span><span>產品設計</span><span>真實問題解決</span>
+        <span>貼文圖片</span><span>公版設計</span><span>快訊節慶</span>
       </div>
     </div>
   </div>
@@ -660,7 +744,7 @@
   <p class="section-sub">精選代表性專案，呈現完整執行歷程與成果</p>
 
   <div class="project-grid">
-    <div class="project-card">
+    <div class="project-card fade-up">
       <div class="tag-list"><span class="tag">社群行銷</span><span class="tag">內容企劃</span></div>
       <h3>MIT 微笑標章社群行銷</h3>
       <p class="project-role">品牌社群經營 · 內容企劃</p>
@@ -668,7 +752,7 @@
       <p class="project-result"><span class="label">成果</span>社群互動與品牌好感度顯著提升</p>
     </div>
 
-    <div class="project-card">
+    <div class="project-card fade-up">
       <div class="tag-list"><span class="tag">PM</span><span class="tag">社群行銷</span></div>
       <h3>實體活動企劃執行</h3>
       <p class="project-role">活動專案企劃 · 現場執行</p>
@@ -676,7 +760,7 @@
       <p class="project-result"><span class="label">成果</span>成功執行多場大型公關活動</p>
     </div>
 
-    <div class="project-card">
+    <div class="project-card fade-up">
       <div class="tag-list"><span class="tag">PM</span><span class="tag">內容企劃</span></div>
       <h3>T 客邦實體課程開發</h3>
       <p class="project-role">課程內容企劃 · 推廣執行</p>
@@ -684,7 +768,7 @@
       <p class="project-result"><span class="label">成果</span>課程順利上線並達成推廣目標</p>
     </div>
 
-    <div class="project-card">
+    <div class="project-card fade-up">
       <div class="tag-list"><span class="tag">PM</span></div>
       <h3>跨部門大型活動協作</h3>
       <p class="project-role">跨部門協調 · 專案執行</p>
@@ -697,21 +781,13 @@
 <section id="case-studies">
   <div class="eyebrow">Case Studies</div>
   <h2 class="section-title">案例分享</h2>
-  <p class="section-sub">點選分類快速篩選專案，點圖片可放大瀏覽</p>
-
-  <div class="tabs" id="tabBar">
-    <button class="tab-btn active" data-tag="全部">全部</button>
-    <button class="tab-btn" data-tag="社群行銷">社群行銷</button>
-    <button class="tab-btn" data-tag="PM">PM</button>
-    <button class="tab-btn" data-tag="內容企劃">內容企劃</button>
-    <button class="tab-btn" data-tag="AI工具">AI工具</button>
-  </div>
+  <p class="section-sub">點擊預覽圖可放大瀏覽完整照片</p>
 
   <div class="gallery-grid" id="portfolioGrid">
 
-    <div class="gallery-card show" data-tags="社群行銷,內容企劃">
-      <div class="gallery-thumb" data-gallery="mit">
-        <img src="./images/MIT_社群貼文_社團體驗.png" alt="MIT 微笑標章社群行銷">
+    <div class="gallery-card fade-up">
+      <div class="placeholder-thumb" data-gallery="mit">
+        <span class="ph-label">預覽圖待補</span>
         <span class="img-count">1 / 3</span>
       </div>
       <div class="gallery-body">
@@ -721,9 +797,9 @@
       </div>
     </div>
 
-    <div class="gallery-card show" data-tags="PM,社群行銷">
-      <div class="gallery-thumb" data-gallery="event">
-        <img src="./images/實體活動企劃執行_大甲媽祖遶境.png" alt="實體活動企劃執行">
+    <div class="gallery-card fade-up">
+      <div class="placeholder-thumb" data-gallery="event">
+        <span class="ph-label">預覽圖待補</span>
         <span class="img-count">1 / 4</span>
       </div>
       <div class="gallery-body">
@@ -733,9 +809,9 @@
       </div>
     </div>
 
-    <div class="gallery-card show" data-tags="PM,內容企劃">
-      <div class="gallery-thumb" data-gallery="tkb">
-        <img src="./images/T客邦課程_社群推廣.png" alt="T 客邦實體課程開發">
+    <div class="gallery-card fade-up">
+      <div class="placeholder-thumb" data-gallery="tkb">
+        <span class="ph-label">預覽圖待補</span>
         <span class="img-count">1 / 2</span>
       </div>
       <div class="gallery-body">
@@ -745,9 +821,9 @@
       </div>
     </div>
 
-    <div class="gallery-card show" data-tags="PM">
-      <div class="gallery-thumb" data-gallery="cross">
-        <img src="./images/跨部門大型活動協作_科技金獎.png" alt="跨部門大型活動協作">
+    <div class="gallery-card fade-up">
+      <div class="placeholder-thumb" data-gallery="cross">
+        <span class="ph-label">預覽圖待補</span>
         <span class="img-count">1 / 3</span>
       </div>
       <div class="gallery-body">
@@ -765,36 +841,43 @@
   <h2 class="section-title">經歷</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="period">社群行銷與內容企劃</div>
-      <div>
-        <h3>MIT 微笑標章社群經營</h3>
-        <p class="role">品牌社群經營 · 內容企劃</p>
-        <p class="desc">負責社群貼文企劃與廠商、KOC 合作，提升品牌互動與曝光度。</p>
+      <div class="timeline-card">
+        <div class="period">2022/04 – 2025/07</div>
+        <h3>台灣星榜文化傳播有限公司（決策公關）</h3>
+        <p class="role">專案企劃</p>
+        <p class="desc">負責提案企劃、專案執行，經營社群與 OMO 整合行銷，協助客戶達到預想成效。</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="period">活動專案管理</div>
-      <div>
-        <h3>大型實體活動企劃執行</h3>
-        <p class="role">活動專案企劃 · 現場執行</p>
-        <p class="desc">主責多場大型實體活動的籌備與現場執行，協調各方資源確保活動順利進行。</p>
+      <div class="timeline-card">
+        <div class="period">2016/06 – 2020/08</div>
+        <h3>T 客邦（城邦集團）</h3>
+        <p class="role">社群策展行銷</p>
+        <p class="desc">行銷企劃四年經驗，開設各種軟硬體技術課程、社群行銷、CRM、網站管理及網路開發，並獨立完成專案。</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="period">課程開發</div>
-      <div>
-        <h3>T 客邦實體課程規劃</h3>
-        <p class="role">課程內容企劃 · 推廣執行</p>
-        <p class="desc">從課程內容設計到推廣素材製作，完整參與課程上線流程。</p>
+      <div class="timeline-card">
+        <div class="period">2014/03 – 2016/03</div>
+        <h3>晨暉生物科技股份有限公司</h3>
+        <p class="role">製程副工程師</p>
+        <p class="desc">生產製程改良，將生產排程縮短 2 天、產量增加 10 倍，並控制產率在 80% 以上。通過 HACCP 及 ISO22000 認證。</p>
       </div>
     </div>
-    <div class="timeline-item">
-      <div class="period">跨部門協作</div>
-      <div>
-        <h3>大型比賽與活動協辦</h3>
-        <p class="role">跨部門協調 · 專案執行</p>
-        <p class="desc">跨部門協調科技金獎、通訊大賽、黑客松等大型活動的執行細節。</p>
-      </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num"><span class="counter" data-target="100" data-suffix="+">0</span></div>
+      <div class="stat-label">堂工作坊</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><span class="counter" data-target="10" data-suffix="倍">0</span></div>
+      <div class="stat-label">產量增加</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num"><span class="counter" data-target="3" data-suffix="個">0</span></div>
+      <div class="stat-label">產業跨域經驗</div>
     </div>
   </div>
 </section>
@@ -802,15 +885,15 @@
 <section id="learning">
   <div class="eyebrow">Continuous Learning</div>
   <h2 class="section-title">自我進修</h2>
-  <div class="chip-row">
-    <div class="chip">SEO 操作實務及應用趨勢</div>
-    <div class="chip">GTM 操作實務班</div>
-    <div class="chip">Google Analytics</div>
-    <div class="chip">新聞稿實務班</div>
-    <div class="chip">會員管理與大數據行銷</div>
-    <div class="chip">LAP 廣告投手訓練營</div>
-    <div class="chip">Google Skillshop</div>
-    <div class="chip">Claude / AI 工具應用</div>
+  <div class="chip-row" id="learningChips">
+    <div class="chip chip-fade">SEO 操作實務及應用趨勢</div>
+    <div class="chip chip-fade">GTM 操作實務班</div>
+    <div class="chip chip-fade">Google Analytics</div>
+    <div class="chip chip-fade">新聞稿實務班</div>
+    <div class="chip chip-fade">會員管理與大數據行銷</div>
+    <div class="chip chip-fade">LAP 廣告投手訓練營</div>
+    <div class="chip chip-fade">Google Skillshop</div>
+    <div class="chip chip-fade">Claude / AI 工具應用</div>
   </div>
 </section>
 
@@ -820,7 +903,7 @@
   <p class="section-sub">運用 Claude 開發具實際使用情境的個人工具，結合日常生活與社會需求，讓 AI 解決真實問題。</p>
 
   <div class="ai-tools-grid">
-    <div class="ai-card">
+    <div class="ai-card fade-up">
       <div class="ai-thumbs" id="petDiaryThumbs">
         <div class="gallery-thumb" data-gallery="pet">
           <img src="./images/寵物日記_1首頁.PNG" alt="寵物日記">
@@ -842,7 +925,7 @@
       </div>
     </div>
 
-    <div class="ai-card coming-soon">
+    <div class="ai-card coming-soon fade-up">
       <div class="ai-icon-placeholder">🗺️</div>
       <div class="ai-card-body">
         <span class="badge-soon">Coming Soon</span>
@@ -851,7 +934,7 @@
       </div>
     </div>
 
-    <div class="ai-card coming-soon">
+    <div class="ai-card coming-soon fade-up">
       <div class="ai-icon-placeholder">🌐</div>
       <div class="ai-card-body">
         <span class="badge-soon">Coming Soon</span>
@@ -865,8 +948,8 @@
 <section id="contact">
   <h2 class="serif">讓我們一起創造有影響力的內容</h2>
   <div class="contact-buttons">
-    <a class="btn btn-primary" href="mailto:contact@example.com">contact@example.com</a>
-    <a class="btn btn-outline" href="#">0900-000-000</a>
+    <a class="btn btn-primary" href="mailto:dannylin1013@gmail.com">dannylin1013@gmail.com</a>
+    <a class="btn btn-outline" href="#">LinkedIn 待補</a>
   </div>
 </section>
 
@@ -875,7 +958,10 @@
     <div class="f-name">林鈺奇 Danny Lin</div>
     <div class="f-sub">© 2026 Danny Lin. 社群行銷 · 專案管理 · 內容企劃</div>
   </div>
-  <a class="f-email" href="mailto:contact@example.com">contact@example.com</a>
+  <div class="f-links">
+    <a href="mailto:dannylin1013@gmail.com">dannylin1013@gmail.com</a>
+    <span>LinkedIn 待補</span>
+  </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -892,22 +978,6 @@
   const mobileMenu = document.getElementById('mobileMenu');
   hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  // Case-study tab filtering
-  const tabBar = document.getElementById('tabBar');
-  const cards = document.querySelectorAll('#portfolioGrid .gallery-card');
-  tabBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('.tab-btn');
-    if (!btn) return;
-    tabBar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const tag = btn.dataset.tag;
-    cards.forEach(card => {
-      const tags = card.dataset.tags.split(',');
-      const matches = tag === '全部' || tags.includes(tag);
-      card.classList.toggle('show', matches);
-    });
-  });
 
   // Lightbox galleries
   const galleries = {
@@ -983,6 +1053,94 @@
     if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
     if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
   });
+
+  // Hero typewriter effect
+  const roles = ['內容企劃', '專案管理', '社群行銷'];
+  const typeEl = document.getElementById('typeRole');
+  let roleIndex = 0;
+
+  function typeLoop() {
+    const word = roles[roleIndex];
+    let charIndex = 0;
+    typeEl.textContent = '';
+    const typeInterval = setInterval(() => {
+      charIndex++;
+      typeEl.textContent = word.slice(0, charIndex);
+      if (charIndex === word.length) {
+        clearInterval(typeInterval);
+        setTimeout(() => {
+          const eraseInterval = setInterval(() => {
+            charIndex--;
+            typeEl.textContent = word.slice(0, charIndex);
+            if (charIndex === 0) {
+              clearInterval(eraseInterval);
+              roleIndex = (roleIndex + 1) % roles.length;
+              setTimeout(typeLoop, 200);
+            }
+          }, 50);
+        }, 2000);
+      }
+    }, 110);
+  }
+  typeLoop();
+
+  // Fade-up entrance animation with stagger, per parent group
+  document.querySelectorAll('.fade-up').forEach(el => {
+    const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('fade-up'));
+    const idx = siblings.indexOf(el);
+    el.style.transitionDelay = (idx * 0.1) + 's';
+  });
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  // Chip fade-in stagger
+  document.querySelectorAll('.chip-fade').forEach((el, idx) => {
+    el.style.transitionDelay = (idx * 0.05) + 's';
+  });
+  const chipObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        chipObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.chip-fade').forEach(el => chipObserver.observe(el));
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1500;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.floor(progress * target);
+      el.textContent = value + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 </script>
 
 </body>
