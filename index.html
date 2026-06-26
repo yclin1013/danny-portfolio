@@ -187,10 +187,21 @@
   /* About */
   #about { background: var(--bg-cream); }
   #about .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+  #about .about-col-left { display: flex; flex-direction: column; }
   #about p.body-text { white-space: pre-line; font-size: 16px; max-width: 640px; }
+  .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .about-tags span {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--bg-cream);
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
   .about-photo {
     position: relative;
     width: 100%;
+    max-width: 320px;
     aspect-ratio: 1/1;
     background: var(--placeholder);
     border-radius: 10px;
@@ -215,7 +226,7 @@
     perspective: 1200px;
   }
   .flip-card {
-    height: 220px;
+    aspect-ratio: 1/1;
   }
   .flip-card-inner {
     position: relative;
@@ -235,15 +246,16 @@
     padding: 28px 26px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  .flip-front { align-items: flex-start; justify-content: center; }
   .flip-front i { font-size: 32px; color: var(--accent); margin-bottom: 16px; }
   .flip-front h3 { font-size: 18px; }
   .flip-back {
     transform: rotateY(180deg);
-    justify-content: center;
   }
-  .flip-back .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .flip-back .tag-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .flip-back .tag {
     background: #fff;
     color: var(--accent);
@@ -647,7 +659,7 @@
   @media (max-width: 1024px) {
     .strength-grid, .job-grid, .project-grid, .gallery-grid, .ai-tools-grid, .stats-row { grid-template-columns: repeat(2, 1fr); }
     #hero { grid-template-columns: 1fr; }
-    .keyword-cloud { display: none !important; }
+    .keyword-cloud { display: block; height: 220px; position: relative; }
     #about .about-grid { grid-template-columns: 1fr; }
     .about-photo { max-width: 320px; }
   }
@@ -668,6 +680,23 @@
     footer { flex-direction: column; text-align: center; }
     .flip-card:hover .flip-card-inner { transform: none; }
     .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    #hero { padding-top: 64px; padding-bottom: 64px; }
+    .keyword-cloud {
+      height: auto;
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .keyword-cloud span {
+      position: static !important;
+      font-size: 13px !important;
+      animation: none !important;
+      background: var(--card);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
   }
 </style>
 </head>
@@ -717,9 +746,25 @@
   <div class="eyebrow">About Me</div>
   <h2 class="section-title">關於我</h2>
   <div class="about-grid">
-    <p class="body-text">無論在哪一個方面，對於感興趣或需要的事物就會積極學習，會在既有的環境下琢磨變通，藉此提高辦公效率。個人特色為適應力高、學習力強、反應變通快、邏輯思考理解能力，並可以獨立完成交辦事項。
+    <div class="about-col-left">
+      <p class="body-text">我是 Danny，一個習慣把問題想清楚、再動手把它做好的人。
 
-近期積極投入 AI 工具的研究與應用，以 Claude 為主要開發工具，結合日常生活與社會需求，陸續打造實用的個人 AI 工具，致力於用科技解決真實問題。</p>
+擁有內容企劃、專案管理與社群行銷的跨領域實戰經驗。
+曾任職城邦集團旗下科技媒體 T客邦，負責實體活動策劃、
+社群經營與數位廣告投放；後於決策公關擔任企劃執行，
+統籌品牌提案、線上線下活動及客戶社群推廣。
+
+近期積極投入 AI 工具的研究與應用，以 Claude 為主要開發工具，
+持續打造切合實際需求的產品。同步深化 SEO、Meta 廣告與
+Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關證照。
+
+適應力強、邏輯清晰，習慣主動學習、獨立作業，
+也擅長跨部門協作。相信好的工作方式不只是把事情完成，
+而是找到更聰明的方式去完成它。</p>
+      <div class="about-tags">
+        <span>讀書會</span><span>戶外運動</span><span>貓奴</span><span>追劇</span><span>AI 工具開發</span><span>數位行銷</span>
+      </div>
+    </div>
     <div class="about-photo" id="aboutPhoto" data-gallery="profile">個人照片待補</div>
   </div>
 </section>
