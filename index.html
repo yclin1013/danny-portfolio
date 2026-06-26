@@ -187,8 +187,10 @@
   /* About */
   #about { background: var(--bg-cream); }
   #about .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
-  #about .about-col-left { display: flex; flex-direction: column; }
-  #about p.body-text { white-space: pre-line; font-size: 16px; max-width: 640px; }
+  #about .about-col-left { display: flex; flex-direction: column; order: 1; }
+  #about .about-photo { order: 2; }
+  #about p.body-text { font-size: 16px; max-width: 640px; margin-bottom: 16px; }
+  #about p.body-text:last-of-type { margin-bottom: 0; }
   .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
   .about-tags span {
     border: 1px solid var(--border);
@@ -254,15 +256,19 @@
   .flip-front h3 { font-size: 18px; }
   .flip-back {
     transform: rotateY(180deg);
+    background: var(--dark) !important;
   }
-  .flip-back .tag-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .flip-back h3 { color: var(--bg); font-size: 16px; margin-bottom: 14px; }
+  .flip-back .tag-list { display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%; }
   .flip-back .tag {
-    background: #fff;
+    background: transparent;
+    border: 1px solid var(--accent);
     color: var(--accent);
     font-size: 12px;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 999px;
+    text-align: center;
   }
 
   /* Job functions - dark section */
@@ -661,6 +667,8 @@
     #hero { grid-template-columns: 1fr; }
     .keyword-cloud { display: block; height: 220px; position: relative; }
     #about .about-grid { grid-template-columns: 1fr; }
+    #about .about-photo { order: -1; }
+    #about .about-col-left { order: 1; }
     .about-photo { max-width: 320px; }
   }
 
@@ -682,20 +690,13 @@
     .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
     #hero { padding-top: 64px; padding-bottom: 64px; }
     .keyword-cloud {
-      height: auto;
-      position: static;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
+      display: block;
+      position: relative;
+      height: 200px;
+      margin-top: 16px;
     }
     .keyword-cloud span {
-      position: static !important;
-      font-size: 13px !important;
       animation: none !important;
-      background: var(--card);
-      padding: 6px 12px;
-      border-radius: 999px;
     }
   }
 </style>
@@ -746,26 +747,16 @@
   <div class="eyebrow">About Me</div>
   <h2 class="section-title">關於我</h2>
   <div class="about-grid">
+    <div class="about-photo" id="aboutPhoto" data-gallery="profile">個人照片待補</div>
     <div class="about-col-left">
-      <p class="body-text">我是 Danny，一個習慣把問題想清楚、再動手把它做好的人。
-
-擁有內容企劃、專案管理與社群行銷的跨領域實戰經驗。
-曾任職城邦集團旗下科技媒體 T客邦，負責實體活動策劃、
-社群經營與數位廣告投放；後於決策公關擔任企劃執行，
-統籌品牌提案、線上線下活動及客戶社群推廣。
-
-近期積極投入 AI 工具的研究與應用，以 Claude 為主要開發工具，
-持續打造切合實際需求的產品。同步深化 SEO、Meta 廣告與
-Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關證照。
-
-適應力強、邏輯清晰，習慣主動學習、獨立作業，
-也擅長跨部門協作。相信好的工作方式不只是把事情完成，
-而是找到更聰明的方式去完成它。</p>
+      <p class="body-text">我是 Danny，一個習慣把問題想清楚、再動手把它做好的人。</p>
+      <p class="body-text">擁有內容企劃、專案管理與社群行銷的跨領域實戰經驗。曾任職城邦集團旗下科技媒體 T客邦，負責實體活動策劃、社群經營與數位廣告投放；後於決策公關擔任企劃執行，統籌品牌提案、線上線下活動及客戶社群推廣。</p>
+      <p class="body-text">近期積極投入 AI 工具的研究與應用，以 Claude 為主要開發工具，持續打造切合實際需求的產品。同步深化 SEO、Meta 廣告與 Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關證照。</p>
+      <p class="body-text">適應力強、邏輯清晰，習慣主動學習、獨立作業，也擅長跨部門協作。相信好的工作方式不只是把事情完成，而是找到更聰明的方式去完成它。</p>
       <div class="about-tags">
         <span>讀書會</span><span>戶外運動</span><span>貓奴</span><span>追劇</span><span>AI 工具開發</span><span>數位行銷</span>
       </div>
     </div>
-    <div class="about-photo" id="aboutPhoto" data-gallery="profile">個人照片待補</div>
   </div>
 </section>
 
@@ -782,6 +773,7 @@ Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關
           <h3>內容企劃</h3>
         </div>
         <div class="flip-face flip-back">
+          <h3>內容企劃</h3>
           <div class="tag-list">
             <span class="tag">文案撰寫</span><span class="tag">SEO</span><span class="tag">季度規劃</span><span class="tag">EDM</span><span class="tag">新聞稿</span>
           </div>
@@ -795,6 +787,7 @@ Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關
           <h3>專案管理</h3>
         </div>
         <div class="flip-face flip-back">
+          <h3>專案管理</h3>
           <div class="tag-list">
             <span class="tag">跨部門協作</span><span class="tag">預算控制</span><span class="tag">時程規劃</span><span class="tag">廠商接洽</span>
           </div>
@@ -808,6 +801,7 @@ Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關
           <h3>社群行銷</h3>
         </div>
         <div class="flip-face flip-back">
+          <h3>社群行銷</h3>
           <div class="tag-list">
             <span class="tag">FB &amp; IG 經營</span><span class="tag">KOC 合作</span><span class="tag">廣告投放</span><span class="tag">數據分析</span>
           </div>
@@ -979,7 +973,7 @@ Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關
   <div class="eyebrow">Continuous Learning</div>
   <h2 class="section-title">自我進修</h2>
 
-  <div class="accordion-item open" data-acc="marketing">
+  <div class="accordion-item" data-acc="marketing">
     <div class="accordion-head">
       <i class="ti ti-speakerphone"></i>
       <h3>行銷與社群</h3>
@@ -1282,10 +1276,19 @@ Google Ads 等數位行銷技能，並已取得金融常識與職業道德相關
     [2, 55], [35, 58], [65, 56], [85, 62], [15, 82], [50, 84]
   ];
   const cloudEl = document.getElementById('keywordCloud');
+  const isMobileCloud = window.innerWidth <= 600;
+  const sizes = keywords.map(kw => kw.size);
+  const minSize = Math.min(...sizes);
+  const maxSize = Math.max(...sizes);
   keywords.forEach((kw, i) => {
     const span = document.createElement('span');
     span.textContent = kw.text;
-    span.style.fontSize = kw.size + 'px';
+    if (isMobileCloud) {
+      const ratio = (kw.size - minSize) / (maxSize - minSize);
+      span.style.fontSize = Math.round(14 + ratio * (22 - 14)) + 'px';
+    } else {
+      span.style.fontSize = kw.size + 'px';
+    }
     span.style.color = kw.color;
     span.style.left = cloudPositions[i][0] + '%';
     span.style.top = cloudPositions[i][1] + '%';
