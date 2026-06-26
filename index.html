@@ -239,8 +239,8 @@
     perspective: 1200px;
   }
   .flip-card {
-    aspect-ratio: 1/1;
-    max-width: 220px;
+    width: 220px;
+    height: 220px;
     margin: 0 auto;
   }
   .flip-card-inner {
@@ -266,7 +266,7 @@
     text-align: center;
   }
   .flip-front i { font-size: 36px; color: var(--accent); margin-bottom: 16px; }
-  .flip-front h3 { font-size: 18px; }
+  .flip-front h3 { font-size: 18px; white-space: nowrap; }
   .flip-back {
     transform: rotateY(180deg);
     background: var(--dark) !important;
