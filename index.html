@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Danny Lin 作品集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   :root {
@@ -39,16 +39,16 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: "Noto Sans TC", "DM Sans", -apple-system, sans-serif;
+    font-family: "LXGW WenKai TC", -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
   }
   h1, h2, h3, .serif {
-    font-family: "Noto Serif TC", Georgia, serif;
+    font-family: "LXGW WenKai TC", Georgia, serif;
   }
   .num, .stat-num, .strength-num, .logo, .nav-links a, .mobile-menu a {
-    font-family: "DM Sans", "Noto Sans TC", sans-serif;
+    font-family: "LXGW WenKai TC", sans-serif;
   }
   a { color: var(--accent); text-decoration: none; }
 
@@ -94,7 +94,7 @@
 
   section { max-width: 1200px; margin: 0 auto; padding: 88px 32px; }
   .eyebrow {
-    font-family: "DM Sans", sans-serif;
+    font-family: "LXGW WenKai TC", sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -185,7 +185,7 @@
   }
   .keyword-cloud span {
     position: absolute;
-    font-family: "DM Sans", "Noto Sans TC", sans-serif;
+    font-family: "LXGW WenKai TC", sans-serif;
     font-weight: 500;
     white-space: nowrap;
     animation: floaty 6s ease-in-out infinite;
@@ -197,9 +197,9 @@
 
   /* About */
   #about { background: var(--bg-cream); }
-  #about .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+  #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   #about .about-col-left { display: flex; flex-direction: column; order: 1; }
-  #about .about-photo { order: 2; }
+  #about .about-col-right { display: flex; justify-content: center; order: 2; }
   #about p.body-text { font-size: 16px; max-width: 640px; margin-bottom: 16px; }
   #about p.body-text:last-of-type { margin-bottom: 0; }
   .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
@@ -313,7 +313,7 @@
   }
   .job-icon-row { display: flex; align-items: center; gap: 14px; }
   .job-icon-row i { font-size: 26px; color: var(--accent); }
-  .job-card h3 { font-size: 16px; color: var(--bg); font-family: "Noto Serif TC", serif; }
+  .job-card h3 { font-size: 16px; color: var(--bg); font-family: "LXGW WenKai TC", serif; }
   .job-tags {
     display: flex;
     gap: 8px;
@@ -705,7 +705,7 @@
     flex-wrap: wrap;
     gap: 12px;
   }
-  footer .f-name { font-weight: 700; font-family: "Noto Serif TC", serif; }
+  footer .f-name { font-weight: 700; font-family: "LXGW WenKai TC", serif; }
   footer .f-sub { font-size: 13px; color: var(--muted); }
   footer .f-links { display: flex; gap: 16px; font-size: 13px; }
 
@@ -715,7 +715,7 @@
     #hero { grid-template-columns: 1fr; }
     .keyword-cloud { display: block; height: 220px; position: relative; }
     #about .about-grid { grid-template-columns: 1fr; }
-    #about .about-photo { order: -1; }
+    #about .about-col-right { order: -1; }
     #about .about-col-left { order: 1; }
     .about-photo { max-width: 320px; }
   }
@@ -795,7 +795,6 @@
   <div class="eyebrow">About Me</div>
   <h2 class="section-title">關於我</h2>
   <div class="about-grid">
-    <div class="about-photo" id="aboutPhoto" data-gallery="profile">個人照片待補</div>
     <div class="about-col-left">
       <p class="body-text">我是 Danny，一個習慣把問題想清楚、再動手把它做好的人。</p>
       <p class="body-text">擁有內容企劃、專案管理與社群行銷的跨領域實戰經驗。曾任職城邦集團旗下科技媒體 T客邦，負責實體活動策劃、社群經營與數位廣告投放；後於決策公關擔任企劃執行，統籌品牌提案、線上線下活動及客戶社群推廣。</p>
@@ -804,6 +803,9 @@
       <div class="about-tags">
         <span>讀書會</span><span>戶外運動</span><span>貓奴</span><span>追劇</span><span>AI 工具開發</span><span>數位行銷</span>
       </div>
+    </div>
+    <div class="about-col-right">
+      <div class="about-photo" id="aboutPhoto" data-gallery="profile">個人照片待補</div>
     </div>
   </div>
 </section>
