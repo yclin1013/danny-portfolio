@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420">
+<rect x="0" y="0" width="680" height="420" fill="#1d2732"/>
+<g stroke="#2c3844" stroke-width="1">
+<line x1="0" y1="105" x2="680" y2="105"/><line x1="0" y1="210" x2="680" y2="210"/><line x1="0" y1="315" x2="680" y2="315"/>
+<line x1="170" y1="0" x2="170" y2="420"/><line x1="340" y1="0" x2="340" y2="420"/><line x1="510" y1="0" x2="510" y2="420"/>
+</g>
+<text x="36" y="48" font-family="monospace" font-size="13" letter-spacing="2" fill="#6b7683">PORTFOLIO / 2026</text>
+<text x="644" y="48" text-anchor="end" font-family="monospace" font-size="16" letter-spacing="2" fill="#ffe14d">CASE 05</text>
+
+<g stroke="#3d4a58" stroke-width="1.5">
+<line x1="340" y1="196" x2="170" y2="120"/><line x1="340" y1="196" x2="510" y2="120"/><line x1="340" y1="196" x2="150" y2="270"/><line x1="340" y1="196" x2="530" y2="270"/>
+</g>
+<g fill="#1d2732" stroke="#8a94a0" stroke-width="2">
+<circle cx="170" cy="120" r="14"/><circle cx="510" cy="120" r="14"/><circle cx="150" cy="270" r="14"/><circle cx="530" cy="270" r="14"/>
+</g>
+<path d="M310 160 h60 v26 a30 30 0 0 1 -60 0 z" fill="#ffe14d"/>
+<path d="M310 166 h-16 a16 16 0 0 0 16 20 M370 166 h16 a16 16 0 0 1 -16 20" fill="none" stroke="#ffe14d" stroke-width="2.5"/>
+<rect x="330" y="216" width="20" height="14" fill="#ffe14d"/>
+<rect x="318" y="230" width="44" height="8" rx="2" fill="#ffe14d"/>
+<circle cx="466" cy="196" r="5" fill="#c8452a"/>
+<text x="480" y="201" font-family="monospace" font-size="12" letter-spacing="1" fill="#c8452a">LIVE</text>
+<text x="36" y="366" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="22" font-weight="500" fill="#fbfaf8">跨部門大型活動協作</text>
+<text x="36" y="392" font-family="monospace" font-size="12" letter-spacing="1.5" fill="#8a94a0">HACKATHON / AWARDS / BROADCAST</text>
+</svg>

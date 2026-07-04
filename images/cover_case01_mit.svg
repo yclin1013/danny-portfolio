@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420">
+<rect x="0" y="0" width="680" height="420" fill="#1d2732"/>
+<g stroke="#2c3844" stroke-width="1">
+<line x1="0" y1="105" x2="680" y2="105"/><line x1="0" y1="210" x2="680" y2="210"/><line x1="0" y1="315" x2="680" y2="315"/>
+<line x1="170" y1="0" x2="170" y2="420"/><line x1="340" y1="0" x2="340" y2="420"/><line x1="510" y1="0" x2="510" y2="420"/>
+</g>
+<text x="36" y="48" font-family="monospace" font-size="13" letter-spacing="2" fill="#6b7683">PORTFOLIO / 2026</text>
+<text x="644" y="48" text-anchor="end" font-family="monospace" font-size="16" letter-spacing="2" fill="#ffe14d">CASE 01</text>
+
+<polyline points="90,290 200,262 310,268 420,215 530,120" fill="none" stroke="#fbfaf8" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="90" cy="290" r="5" fill="#1d2732" stroke="#fbfaf8" stroke-width="2"/>
+<circle cx="200" cy="262" r="5" fill="#1d2732" stroke="#fbfaf8" stroke-width="2"/>
+<circle cx="310" cy="268" r="5" fill="#1d2732" stroke="#fbfaf8" stroke-width="2"/>
+<circle cx="420" cy="215" r="5" fill="#1d2732" stroke="#fbfaf8" stroke-width="2"/>
+<circle cx="530" cy="120" r="9" fill="#ffe14d"/>
+<rect x="470" y="150" width="130" height="34" rx="4" fill="#ffe14d"/>
+<text x="535" y="173" text-anchor="middle" font-family="monospace" font-size="17" font-weight="500" fill="#1d2732">+278.5%</text>
+<path d="M120 180 h74 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-50 l-14 16 v-16 h-10 a8 8 0 0 1 -8 -8 v-30 a8 8 0 0 1 8 -8 z" fill="none" stroke="#8a94a0" stroke-width="1.5"/>
+<path d="M157 198 c0 -7 10 -7 10 0 c0 7 -10 11 -10 11 c0 0 -10 -4 -10 -11 c0 -7 10 -7 10 0" fill="#8a94a0"/>
+<text x="36" y="366" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="22" font-weight="500" fill="#fbfaf8">MIT 微笑標章 社群年度操盤</text>
+<text x="36" y="392" font-family="monospace" font-size="12" letter-spacing="1.5" fill="#8a94a0">SOCIAL / 90-DAY REACH 567K</text>
+</svg>
