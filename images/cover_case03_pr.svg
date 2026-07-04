@@ -8,7 +8,7 @@
 <text x="644" y="48" text-anchor="end" font-family="monospace" font-size="16" letter-spacing="2" fill="#ffe14d">CASE 03</text>
 
 <path d="M300 200 h80 l14 90 h-108 z" fill="none" stroke="#fbfaf8" stroke-width="2.5"/>
-<rect x="316" y="150" width="20" height="34" rx="10" fill="#fbfaf8"/>
+<rect x="316" y="150" width="20" height="34" fill="#fbfaf8"/>
 <line x1="326" y1="184" x2="326" y2="200" stroke="#fbfaf8" stroke-width="2.5"/>
 <rect x="348" y="158" width="16" height="26" rx="8" fill="none" stroke="#fbfaf8" stroke-width="2"/>
 <line x1="356" y1="184" x2="356" y2="200" stroke="#fbfaf8" stroke-width="2"/>
@@ -20,6 +20,6 @@
 <line x1="500" y1="120" x2="516" y2="136"/><line x1="524" y1="112" x2="524" y2="134"/><line x1="548" y1="120" x2="532" y2="136"/>
 </g>
 <line x1="120" y1="290" x2="560" y2="290" stroke="#3d4a58" stroke-width="2"/>
-<text x="36" y="366" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="22" font-weight="500" fill="#fbfaf8">公關活動統籌</text>
+<text x="36" y="366" font-family="'Noto Sans TC','PingFang TC',sans-serif" font-size="22" font-weight="500" fill="#fbfaf8">公關活動</text>
 <text x="36" y="392" font-family="monospace" font-size="12" letter-spacing="1.5" fill="#8a94a0">PRESS CONFERENCE / CEREMONY</text>
 </svg>
