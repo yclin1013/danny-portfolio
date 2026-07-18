@@ -135,9 +135,10 @@ mark{
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .skill{border:1px solid var(--line);border-radius:8px;padding:30px 28px;background:var(--paper);transition:.25s}
 .skill:hover{border-color:var(--ink);box-shadow:0 8px 24px rgba(29,39,50,.07);transform:translateY(-3px)}
-.skill i{font-size:30px;color:var(--ink)}
-.skill h3{font-size:19px;margin:14px 0 4px}
-.skill-en{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.skill-head{display:flex;align-items:center;gap:12px}
+.skill-head i{font-size:24px;color:var(--ink)}
+.skill-head h3{font-size:19px;margin:0}
+.skill-en{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
 .skill-tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
 .skill-tags .tag{border-color:var(--line);transition:.2s}
 .skill:hover .skill-tags .tag{border-color:var(--ink);color:var(--ink)}
@@ -156,6 +157,7 @@ mark{
 .tool:hover{border-color:var(--ink);box-shadow:0 8px 24px rgba(29,39,50,.07)}
 .tool-media{aspect-ratio:1/1;background:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden}
 .tool-media img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+.tool-media img.fill{object-fit:cover;transform:scale(1.18)}
 .tool-media .ph{color:#7c8794;font-size:40px}
 .tool-body{padding:24px 26px;flex:1;display:flex;flex-direction:column}
 .tool-status{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:3px 10px;border-radius:20px;width:fit-content;margin-bottom:12px}
@@ -163,6 +165,9 @@ mark{
 .status-soon{background:var(--paper-soft);color:var(--muted);border:1px dashed var(--line)}
 .tool h3{font-size:18px;margin-bottom:6px}
 .tool-why{font-size:14px;flex:1}
+ul.tool-why{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+ul.tool-why li{padding-left:15px;position:relative;line-height:1.7}
+ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--ink)}
 .tool-links{margin-top:16px;font-size:14px;display:flex;gap:16px}
 .tool-links a{display:inline-flex;align-items:center;gap:5px;font-weight:500}
 .tool-links a:hover{text-decoration:underline}
@@ -371,6 +376,21 @@ mark{
         </div>
       </article>
 
+      <article class="case reveal">
+        <div class="case-media">
+          <img src="images/cover_case06_research.svg" alt="CASE 06 封面插畫：折線圖、放大鏡與對話框" onerror="this.remove()">
+        </div>
+        <div class="case-body">
+          <p class="case-code">CASE 06／內容策略研究</p>
+          <h3>志祺七七頻道內容策略分析暨議題企劃提案</h3>
+          <p class="case-role">獨立研究專案・資料工程×內容分析×議題企劃</p>
+          <p class="case-desc">以 YouTube Data API 抓取全頻道 8,012 支影片數據，分層抽樣 36 支＋ 15 支逐字稿文本分析，拆解「解說型／訪談型」兩套內容公式與危機回應策略，產出 17 個附時事由頭、選角建議與風險設計的議題企劃；資料管線與分析流程全程以 Claude Code 建立。</p>
+          <p class="case-desc" style="color:var(--muted)">完整報告與議題企劃提案，於面談時提供。</p>
+          <p class="case-result"><span class="k">RESULT</span><span><mark>8,012</mark> 支全量數據 × <mark>36</mark> 支分層抽樣 × <mark>17</mark> 題企劃提案</span></p>
+          <div class="case-tags"><span class="tag">#YouTubeDataAPI</span><span class="tag">#Python</span><span class="tag">#內容策略</span><span class="tag">#議題企劃</span><span class="tag">#AI工作流</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -436,25 +456,19 @@ mark{
     </div>
     <div class="skills-grid">
       <div class="skill reveal">
-        <i class="ti ti-file-text"></i>
-        <h3>內容企劃</h3>
-        <p class="skill-en">CONTENT PLANNING</p>
+        <div class="skill-head"><i class="ti ti-file-text"></i><h3>內容企劃</h3><span class="skill-en">CONTENT PLANNING</span></div>
         <div class="skill-tags">
           <span class="tag">服務建議書</span><span class="tag">文案撰寫</span><span class="tag">SEO</span><span class="tag">季度規劃</span><span class="tag">EDM</span><span class="tag">新聞稿</span><span class="tag">市場分析</span>
         </div>
       </div>
       <div class="skill reveal">
-        <i class="ti ti-clipboard-list"></i>
-        <h3>專案管理</h3>
-        <p class="skill-en">PROJECT MANAGEMENT</p>
+        <div class="skill-head"><i class="ti ti-clipboard-list"></i><h3>專案管理</h3><span class="skill-en">PROJECT MANAGEMENT</span></div>
         <div class="skill-tags">
           <span class="tag">跨部門協作</span><span class="tag">預算控制</span><span class="tag">時程規劃</span><span class="tag">廠商接洽</span><span class="tag">展場設計</span><span class="tag">活動執行</span>
         </div>
       </div>
       <div class="skill reveal">
-        <i class="ti ti-speakerphone"></i>
-        <h3>社群行銷</h3>
-        <p class="skill-en">SOCIAL MARKETING</p>
+        <div class="skill-head"><i class="ti ti-speakerphone"></i><h3>社群行銷</h3><span class="skill-en">SOCIAL MARKETING</span></div>
         <div class="skill-tags">
           <span class="tag">FB & IG 經營</span><span class="tag">KOC 合作</span><span class="tag">OMO 整合</span><span class="tag">廣告投放</span><span class="tag">數據分析</span><span class="tag">貼文設計</span><span class="tag">節慶企劃</span>
         </div>
@@ -515,7 +529,11 @@ mark{
         <div class="tool-body">
           <span class="tool-status status-live">● LIVE</span>
           <h3>🐾 寵物日記</h3>
-          <p class="tool-why">解決的問題：貓奴想追蹤寵物的飲食與健康，卻找不到夠簡單的紀錄工具。從需求拆解、介面設計到部署上線全程用 Claude 完成。</p>
+          <ul class="tool-why">
+            <li>解決的問題：想追蹤毛孩飲食與健康，卻找不到夠簡單的紀錄工具</li>
+            <li>總覽、指數、飲食、健康四大紀錄模組</li>
+            <li>需求拆解、介面設計到部署上線，全程以 Claude 完成</li>
+          </ul>
           <div class="tool-links">
             <a href="https://pet-care-diary-beryl.vercel.app/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>開啟網站</a>
             <a href="#" data-gallery="petdiary" class="js-gallery"><i class="ti ti-photo"></i>看截圖</a>
@@ -523,19 +541,21 @@ mark{
         </div>
       </article>
       <article class="tool reveal">
-        <div class="tool-media"><div class="ph"><i class="ti ti-map-2"></i></div></div>
+        <div class="tool-media" data-gallery="petmap">
+          <div class="ph"><i class="ti ti-map-2"></i></div>
+          <img class="fill" src="images/寵物地圖_封面圖.png" alt="寵物地圖 logo：地圖上的寵物與醫療標記" onerror="this.remove()">
+        </div>
         <div class="tool-body">
           <span class="tool-status status-soon">COMING SOON</span>
           <h3>🗺️ 寵物地圖</h3>
-          <p class="tool-why">整合寵物友善地點的地圖工具，延伸寵物日記的使用情境，規劃中。</p>
-        </div>
-      </article>
-      <article class="tool reveal">
-        <div class="tool-media"><div class="ph"><i class="ti ti-heart-handshake"></i></div></div>
-        <div class="tool-body">
-          <span class="tool-status status-soon">COMING SOON</span>
-          <h3>🧮 長照點數計算器</h3>
-          <p class="tool-why">協助家庭照顧者快速試算長照 2.0 給付點數，把複雜制度翻譯成一目了然的工具。</p>
+          <ul class="tool-why">
+            <li>解決的問題：帶毛孩就醫、覓食，要在地圖與評論間來回查證</li>
+            <li>整合雙北動物醫院與寵物友善餐廳，支援急診／24 小時／免預約篩選與收藏</li>
+            <li>以 Claude Code 建立資料蒐集與地圖介面，內部測試中</li>
+          </ul>
+          <div class="tool-links">
+            <a href="#" data-gallery="petmap" class="js-gallery"><i class="ti ti-photo"></i>看截圖</a>
+          </div>
         </div>
       </article>
       <article class="tool reveal">
@@ -543,7 +563,10 @@ mark{
         <div class="tool-body">
           <span class="tool-status status-soon">COMING SOON</span>
           <h3>🥬 台灣食材圖鑑</h3>
-          <p class="tool-why">解決的問題：想跟著產季吃在地食材，卻查不到系統化的資訊。整理台灣食材的產季、挑選與保存方式，製作中。</p>
+          <ul class="tool-why">
+            <li>解決的問題：想跟著產季吃在地食材，卻查不到系統化資訊</li>
+            <li>整理台灣食材的產季、挑選與保存方式，製作中</li>
+          </ul>
         </div>
       </article>
     </div>
@@ -612,6 +635,7 @@ const GALLERIES = {
   courses: ['images/T客邦課程_課程推廣.png','images/T客邦課程_社群推廣.png','images/T客邦課程_SEO.jpg','images/T客邦課程_採訪.jpg','images/T客邦課程_線上課程.jpg','images/T客邦課程_自然語言課程.jpg'],
   crossdept: ['images/跨部門協作_科技金獎.png','images/跨部門協作_通訊大賽.png','images/跨部門協作_黑客松.png'],
   petdiary: ['images/寵物日記_1首頁.png','images/寵物日記_2指數.png','images/寵物日記_3飲食.png','images/寵物日記_4健康.png'],
+  petmap: ['images/寵物地圖_醫院.png','images/寵物地圖_餐廳.png','images/寵物地圖_導航.png','images/寵物地圖_收藏.png'],
   me: ['images/個人照片_形象照.jpg','images/個人照片_武嶺.jpg','images/個人照片_滑雪.jpg','images/個人照片_讀書會.jpg']
 };
 let lbList = [], lbIdx = 0;
