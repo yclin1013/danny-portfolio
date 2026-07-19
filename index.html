@@ -377,8 +377,10 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
       </article>
 
       <article class="case reveal">
-        <div class="case-media">
+        <div class="case-media" data-gallery="research">
+          <div class="ph"><i class="ti ti-photo"></i>點擊看報告節錄</div>
           <img src="images/cover_case06_research.svg" alt="CASE 06 封面插畫：折線圖、放大鏡與對話框" onerror="this.remove()">
+          <span class="zoom"><i class="ti ti-zoom-in"></i>3 張</span>
         </div>
         <div class="case-body">
           <p class="case-code">CASE 06／內容策略研究</p>
@@ -528,7 +530,7 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
         </div>
         <div class="tool-body">
           <span class="tool-status status-live">● LIVE</span>
-          <h3>🐾 寵物日記</h3>
+          <h3>寵物日記</h3>
           <ul class="tool-why">
             <li>解決的問題：想追蹤毛孩飲食與健康，卻找不到夠簡單的紀錄工具</li>
             <li>總覽、指數、飲食、健康四大紀錄模組</li>
@@ -547,7 +549,7 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
         </div>
         <div class="tool-body">
           <span class="tool-status status-soon">COMING SOON</span>
-          <h3>🗺️ 寵物地圖</h3>
+          <h3>寵物地圖</h3>
           <ul class="tool-why">
             <li>解決的問題：帶毛孩就醫、覓食，要在地圖與評論間來回查證</li>
             <li>整合雙北動物醫院與寵物友善餐廳，支援急診／24 小時／免預約篩選與收藏</li>
@@ -559,10 +561,10 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
         </div>
       </article>
       <article class="tool reveal">
-        <div class="tool-media"><div class="ph"><i class="ti ti-carrot"></i></div></div>
+        <div class="tool-media"><div class="ph"><i class="ti ti-carrot"></i></div><img src="images/食材圖鑑_封面圖.png" alt="台灣食材圖鑑封面：產季月曆與台灣當季蔬果插畫" onerror="this.remove()"></div>
         <div class="tool-body">
           <span class="tool-status status-soon">COMING SOON</span>
-          <h3>🥬 台灣食材圖鑑</h3>
+          <h3>台灣食材圖鑑</h3>
           <ul class="tool-why">
             <li>解決的問題：想跟著產季吃在地食材，卻查不到系統化資訊</li>
             <li>整理台灣食材的產季、挑選與保存方式，製作中</li>
@@ -636,6 +638,7 @@ const GALLERIES = {
   crossdept: ['images/跨部門協作_科技金獎.png','images/跨部門協作_通訊大賽.png','images/跨部門協作_黑客松.png'],
   petdiary: ['images/寵物日記_1首頁.png','images/寵物日記_2指數.png','images/寵物日記_3飲食.png','images/寵物日記_4健康.png'],
   petmap: ['images/寵物地圖_醫院.png','images/寵物地圖_餐廳.png','images/寵物地圖_導航.png','images/寵物地圖_收藏.png'],
+  research: ['images/志祺七七研究_封面.png','images/志祺七七研究_方法論.png','images/志祺七七研究_數據發現.png'],
   me: ['images/個人照片_形象照.jpg','images/個人照片_武嶺.jpg','images/個人照片_滑雪.jpg','images/個人照片_讀書會.jpg']
 };
 let lbList = [], lbIdx = 0;
