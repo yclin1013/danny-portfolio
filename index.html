@@ -81,17 +81,18 @@ mark{
 .btn-primary:hover{background:var(--ink-elevated);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--ink)}
 .btn-ghost:hover{background:var(--hl-soft);transform:translateY(-2px)}
-.hero-facts{margin-top:64px;display:flex;gap:0;border-top:1px solid var(--line);flex-wrap:wrap}
-.fact{padding:22px 36px 0 0;margin-right:36px}
+.hero-facts{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fact{border:1px solid var(--line);border-radius:8px;padding:22px 26px;background:var(--paper);transition:.25s}
+.fact:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,39,50,.06)}
 .fact-num{font-family:var(--mono);font-size:26px;color:var(--ink);font-weight:500}
 .fact-label{font-size:13px;color:var(--muted);margin-top:2px}
 
 /* ---------- 案例 ---------- */
 .cases{background:var(--paper-soft)}
 .case-list{display:flex;flex-direction:column;gap:28px}
-.case{background:var(--paper);border:1px solid var(--line);border-radius:8px;display:grid;grid-template-columns:340px 1fr;overflow:hidden;transition:.25s}
+.case{background:var(--paper);border:1px solid var(--line);border-radius:8px;display:grid;grid-template-columns:372px 1fr;overflow:hidden;transition:.25s}
 .case:hover{border-color:var(--ink);box-shadow:0 10px 30px rgba(29,39,50,.08)}
-.case-media{background:var(--ink);position:relative;min-height:220px;cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.case-media{background:var(--ink);position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden;aspect-ratio:680/420;align-self:center;margin:26px 0 26px 26px;border-radius:6px}
 .case-media img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:var(--ink);transition:.3s}
 .case-media:hover img{transform:scale(1.03)}
 .case-media .ph{color:#7c8794;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px}
@@ -157,7 +158,6 @@ mark{
 .tool:hover{border-color:var(--ink);box-shadow:0 8px 24px rgba(29,39,50,.07)}
 .tool-media{aspect-ratio:1/1;background:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden}
 .tool-media img{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
-.tool-media img.fill{object-fit:cover;transform:scale(1.18)}
 .tool-media .ph{color:#7c8794;font-size:40px}
 .tool-body{padding:24px 26px;flex:1;display:flex;flex-direction:column}
 .tool-status{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:3px 10px;border-radius:20px;width:fit-content;margin-bottom:12px}
@@ -222,7 +222,7 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
 @media (max-width:960px){
   .skills-grid,.tools-grid{grid-template-columns:repeat(2,1fr)}
   .case{grid-template-columns:1fr}
-  .case-media{min-height:200px;aspect-ratio:16/9}
+  .case-media{aspect-ratio:680/420;margin:0;border-radius:0;align-self:stretch}
   .about-grid{grid-template-columns:1fr}
   .about-photo{max-width:320px;order:-1}
 }
@@ -232,7 +232,7 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
   .skills-grid,.tools-grid{grid-template-columns:1fr}
   .exp-stats{grid-template-columns:1fr}
   .edu-row{grid-template-columns:1fr;gap:6px}
-  .fact{padding-right:0;margin-right:28px}
+  .hero-facts{grid-template-columns:1fr;gap:12px}
   .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;padding:10px 24px 20px;border-bottom:1px solid var(--line);display:none}
   .nav-links.open{display:flex}
   .nav-links li{padding:10px 0}
@@ -543,7 +543,7 @@ ul.tool-why li::before{content:'';position:absolute;left:0;top:.68em;width:5px;h
       <article class="tool reveal">
         <div class="tool-media" data-gallery="petmap">
           <div class="ph"><i class="ti ti-map-2"></i></div>
-          <img class="fill" src="images/寵物地圖_封面圖.png" alt="寵物地圖 logo：地圖上的寵物與醫療標記" onerror="this.remove()">
+          <img src="images/寵物地圖_封面圖.png" alt="寵物地圖 logo：地圖上的寵物與醫療標記" onerror="this.remove()">
         </div>
         <div class="tool-body">
           <span class="tool-status status-soon">COMING SOON</span>
