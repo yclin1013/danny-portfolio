@@ -139,7 +139,7 @@
 - 工具名稱為純文字，❌ 不加 emoji（封面圖已承擔識別功能）
 - 食材圖鑑卡片封面：images/食材圖鑑_封面圖.png；「看截圖」燈箱為 食材圖鑑_首頁.png → _分類.png → _食物介紹.png（副檔名一律小寫）；已上線（LIVE），開啟網站連結 https://ingredient-guide-app.web.app/
 - 卡片封面為 1:1 正方形（App 縮圖規格），圖片 `object-fit: contain` 等比縮放不裁切，墨青底襯邊
-- 文案為條列式 `ul.tool-why`（2–3 點，墨青圓點）：首點固定「解決的問題：⋯⋯」，其餘點說明功能與 Claude 開發過程；❌ 不用長段落
+- 文案為條列式 `ul.tool-why`（2–3 點，墨青圓點）：首點固定「解決的問題：⋯⋯」，中間點說明功能，末點固定「使用技術：⋯⋯」列出實際技術棧（依各專案 `package.json` 為準），LIVE 專案在技術棧後補一句 Claude／Claude Code 開發過程或上線狀態；❌ 不用長段落
 - 寵物日記卡片封面固定用 logo（images/寵物日記_封面圖.png）；「看截圖」燈箱為 寵物日記_總覽.png → _指數.png → _飲食.png → _健康.png → _紀事.png（副檔名一律小寫）
 - 寵物地圖卡片封面固定用去圓角正方形原圖（images/寵物地圖_封面圖.png，512×512）；❌ 不用 .fill 放大裁切（已移除，會裁到左右地標）；「看截圖」燈箱為 寵物地圖_餐廳.png → _醫院.png → _資訊.png → _導航.png → _註記.png（副檔名一律小寫）；已上線（LIVE），開啟網站連結 https://pet-map-app-preview.web.app/（注意：此為 preview 版網址，若之後加回帳密門檻需另行處理連結是否移除）
 - ❌ 不列「個人網頁」為 Coming Soon（本網站即為該作品）
@@ -179,6 +179,7 @@
 
 | 日期 | 異動內容 |
 |---|---|
+| 2026/08/13 | 新增 README.md、CLAUDE.md；README 專案結構補上這兩份檔案；DESIGN.md 工具卡規格補上「使用技術」文案慣例，同步先前已落地到 index.html 但規格文件漏記的內容 |
 | 2026/08/13 | 寵物地圖、台灣食材圖鑑（更名為「食材圖鑑」）狀態改為 LIVE，接上開啟網站連結（分別為 https://pet-map-app-preview.web.app/ 、 https://ingredient-guide-app.web.app/ ）；三張工具卡文案新增「使用技術」說明（寵物日記：React／Vite／Firebase；寵物地圖：React／Google Maps API／Firebase；食材圖鑑：React Native／Expo／TypeScript／Firebase） |
 | 2026/08/13 | 圖片全面整理：寵物日記／寵物地圖／台灣食材圖鑑截圖全數更新並統一副檔名為小寫 .png；燈箱順序改為寵物日記（總覽→指數→飲食→健康→紀事）、寵物地圖（餐廳→醫院→資訊→導航→註記）、台灣食材圖鑑新增「看截圖」（首頁→分類→食物介紹） |
 | 2026/07/19 | v2.9 全站文案總校：案例區 lead 改三問排比；CASE 01 挑戰／執行段順句；CASE 03／05 RESULT 改寫（破折號取代括號、「扛起」取代「身兼」）；CASE 06 RESULT 補句號；能力區 lead、聯絡區文字微調。原則：長敘事句優於短句堆疊，RESULT 行內不超過一個句號 |
