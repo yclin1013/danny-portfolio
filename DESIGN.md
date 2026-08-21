@@ -161,6 +161,7 @@
 ### 燈箱（共用元件）
 - 圖庫資料集中在 JS 的 `GALLERIES` 物件，key 對應 `data-gallery` 屬性
 - 圖說自動取檔名（去除副檔名），顯示「N / 總數」
+- `<img id="lb-img">` 的 `alt` 屬性由 `IMAGE_ALT` 對照表（key 為檔名，value 為描述句）提供，`renderLB()` 切換圖片時同步設定；新增圖片時務必在 `IMAGE_ALT` 補上對應描述句，❌ 不留空字串、不直接沿用檔名
 
 ---
 
@@ -169,7 +170,6 @@
 - [ ] 美編設計案例（CASE 05 或獨立圖牆，4–6 張貼文圖／公版設計）
 - [ ] favicon
 - [ ] GA4 或 GTM 追蹤碼
-- [ ] 圖片 alt 文字補完（換上真實圖片時逐張確認）
 - [ ] （選配）前主管推薦語一句，放經歷區
 - [ ] 履歷內容更新時，重新輸出 YCLin_履歷表.pdf 並覆蓋 repo 根目錄檔案
 
@@ -179,6 +179,7 @@
 
 | 日期 | 異動內容 |
 |---|---|
+| 2026/08/21 | 燈箱圖片全面補上描述性 alt 文字，取代原本空白或依賴檔名的作法（新增 `IMAGE_ALT` 對照表，`renderLB()` 切換圖片時同步設定 `<img id="lb-img">` 的 alt） |
 | 2026/08/21 | 加長 og:description 至 100 字以上，修正 LinkedIn Post Inspector 的字數不足警告 |
 | 2026/08/21 | 補上 Open Graph 分享標籤與社群分享縮圖（og-image.png，IBM Plex Mono／Noto Serif CJK TC 字體）；修正聯絡區 LinkedIn 連結為新網址 yuchilin1013 |
 | 2026/08/13 | 新增 README.md、CLAUDE.md；README 專案結構補上這兩份檔案；DESIGN.md 工具卡規格補上「使用技術」文案慣例，同步先前已落地到 index.html 但規格文件漏記的內容 |
