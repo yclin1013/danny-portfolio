@@ -179,6 +179,7 @@
 
 | 日期 | 異動內容 |
 |---|---|
+| 2026/08/21 | 加長 og:description 至 100 字以上，修正 LinkedIn Post Inspector 的字數不足警告 |
 | 2026/08/21 | 補上 Open Graph 分享標籤與社群分享縮圖（og-image.png，IBM Plex Mono／Noto Serif CJK TC 字體）；修正聯絡區 LinkedIn 連結為新網址 yuchilin1013 |
 | 2026/08/13 | 新增 README.md、CLAUDE.md；README 專案結構補上這兩份檔案；DESIGN.md 工具卡規格補上「使用技術」文案慣例，同步先前已落地到 index.html 但規格文件漏記的內容 |
 | 2026/08/13 | 寵物地圖、台灣食材圖鑑（更名為「食材圖鑑」）狀態改為 LIVE，接上開啟網站連結（分別為 https://pet-map-app-preview.web.app/ 、 https://ingredient-guide-app.web.app/ ）；三張工具卡文案新增「使用技術」說明（寵物日記：React／Vite／Firebase；寵物地圖：React／Google Maps API／Firebase；食材圖鑑：React Native／Expo／TypeScript／Firebase） |
