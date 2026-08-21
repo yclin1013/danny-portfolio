@@ -179,6 +179,7 @@
 
 | 日期 | 異動內容 |
 |---|---|
+| 2026/08/21 | 更新 YCLin_履歷表.pdf（覆蓋 repo 根目錄檔案，內容有調整） |
 | 2026/08/21 | 燈箱圖片全面補上描述性 alt 文字，取代原本空白或依賴檔名的作法（新增 `IMAGE_ALT` 對照表，`renderLB()` 切換圖片時同步設定 `<img id="lb-img">` 的 alt） |
 | 2026/08/21 | 加長 og:description 至 100 字以上，修正 LinkedIn Post Inspector 的字數不足警告 |
 | 2026/08/21 | 補上 Open Graph 分享標籤與社群分享縮圖（og-image.png，IBM Plex Mono／Noto Serif CJK TC 字體）；修正聯絡區 LinkedIn 連結為新網址 yuchilin1013 |
