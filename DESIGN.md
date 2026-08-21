@@ -167,7 +167,7 @@
 ## 六、待補項目
 
 - [ ] 美編設計案例（CASE 05 或獨立圖牆，4–6 張貼文圖／公版設計）
-- [ ] Open Graph 標籤（og:title / og:description / og:image）＋ favicon
+- [ ] favicon
 - [ ] GA4 或 GTM 追蹤碼
 - [ ] 圖片 alt 文字補完（換上真實圖片時逐張確認）
 - [ ] （選配）前主管推薦語一句，放經歷區
@@ -179,6 +179,7 @@
 
 | 日期 | 異動內容 |
 |---|---|
+| 2026/08/21 | 補上 Open Graph 分享標籤與社群分享縮圖（og-image.png，IBM Plex Mono／Noto Serif CJK TC 字體）；修正聯絡區 LinkedIn 連結為新網址 yuchilin1013 |
 | 2026/08/13 | 新增 README.md、CLAUDE.md；README 專案結構補上這兩份檔案；DESIGN.md 工具卡規格補上「使用技術」文案慣例，同步先前已落地到 index.html 但規格文件漏記的內容 |
 | 2026/08/13 | 寵物地圖、台灣食材圖鑑（更名為「食材圖鑑」）狀態改為 LIVE，接上開啟網站連結（分別為 https://pet-map-app-preview.web.app/ 、 https://ingredient-guide-app.web.app/ ）；三張工具卡文案新增「使用技術」說明（寵物日記：React／Vite／Firebase；寵物地圖：React／Google Maps API／Firebase；食材圖鑑：React Native／Expo／TypeScript／Firebase） |
 | 2026/08/13 | 圖片全面整理：寵物日記／寵物地圖／台灣食材圖鑑截圖全數更新並統一副檔名為小寫 .png；燈箱順序改為寵物日記（總覽→指數→飲食→健康→紀事）、寵物地圖（餐廳→醫院→資訊→導航→註記）、台灣食材圖鑑新增「看截圖」（首頁→分類→食物介紹） |
